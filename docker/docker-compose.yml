@@ -1,38 +1,31 @@
 version: '3.8'
 
 services:
-  app:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    container_name: my_app
+  timescaledb:
+    image: timescale/timescaledb:latest-pg14
+    container_name: timescaledb
+    restart: always
     environment:
-      - ENVIRONMENT=production
+      POSTGRES_DB: mydb
+      POSTGRES_USER: myuser
+      POSTGRES_PASSWORD: mypassword
     ports:
-      - "8000:8000"
+      - "5432:5432"
     volumes:
-      - .:/app
-    networks:
-      - app-network
-    depends_on:
-      - grafana
+      - timescale_data:/var/lib/postgresql/data
 
   grafana:
     image: grafana/grafana:latest
     container_name: grafana
-    environment:
-      - GF_SECURITY_ADMIN_PASSWORD=admin
+    restart: always
     ports:
       - "3000:3000"
     volumes:
-      - grafana-data:/var/lib/grafana
-    networks:
-      - app-network
-
-networks:
-  app-network:
-    driver: bridge
+      - grafana_data:/var/lib/grafana
+      - ./docker/config/datasources:/etc/grafana/provisioning/datasources
+    depends_on:
+      - timescaledb
 
 volumes:
-  grafana-data:
-    driver: local
+  timescale_data:
+  grafana_data:

@@ -40,11 +40,13 @@
    ```bash
    docker-compose up -d
 4. ### Запустите контейнеры с помощью Docker Compose:
-   Перейдите по адресу http://localhost:3000 для доступа к Grafana и настройте источники данных через интерфейс.
-5. ### Запустите контейнеры с помощью Docker Compose:
+   Адрес Grafana -  http://localhost:3000 | Адрес TimescaleDB http://localhost:5432
+5. ### Соеденение Grafana и TimescaleDB
+   Переходим в http://localhost:3000 -> connections -> Add new connection -> Ищем PostgreSQL -> Add new data source -> Далее заполняем форму подключения (Host URL: timescaledb:5432, TLS/SSL Mode: disable)
+6. ### Запустите контейнеры с помощью Docker Compose:
    ```bash
    docker-compose logs
-6. ### Для остановки контейнеров:
+7. ### Для остановки контейнеров:
    ```bash
    docker-compose down
 
@@ -77,8 +79,9 @@
    sudo docker-compose up -d
 
 5. ### Перейдите на Grafana
-   Перейдите по адресу сервера на порту Grafana (например, http://your-server-ip:3000) для настройки и мониторинга.
-
-6. ### Для остановки контейнеров
+   Адрес Grafana -  http://localhost:3000 | Адрес TimescaleDB http://localhost:5432
+6. ### Соеденение Grafana и TimescaleDB
+   Переходим в http://localhost:3000 -> connections -> Add new connection -> Ищем PostgreSQL -> Add new data source -> Далее заполняем форму подключения (Host URL: timescaledb:5432, TLS/SSL Mode: disable)
+7. ### Для остановки контейнеров
    ```bash
    sudo docker-compose down
