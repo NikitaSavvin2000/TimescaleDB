@@ -5,8 +5,8 @@ DB_PARAMS = {
     "dbname": "mydb",
     "user": "myuser",
     "password": "mypassword",
-    "host": "localhost",
-    "port": 5432
+    "host": "77.37.136.11",
+    "port": 5433
 }
 
 df = pd.read_csv('https://docs.google.com/spreadsheets/d/e/2PACX-1vSgwB47qVFZcr1Aq--UWxZ6fDi9CGLZm-1i8QoMgfdaHUbV8EqSli3ayPxYYxD8kqfYYHD41uuNxbjZ/pub?gid=1952392108&single=true&output=csv')
