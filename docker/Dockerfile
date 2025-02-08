@@ -5,3 +5,5 @@ WORKDIR /app
 COPY . /app/
 
 RUN mkdir -p /var/lib/grafana && touch /var/lib/grafana/.initialized
+
+EXPOSE 3000
